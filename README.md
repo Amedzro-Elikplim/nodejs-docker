@@ -12,7 +12,7 @@
 
 - You have successfully created a docker image and build your first containerized app. Hooray!!!
 
-- Open your app and make n change. When you refresh your browser, you will realize that the app has not updated. For you to see the change, you have to stop the container, remove it and build a new one. This is not an efficient way for developers since it is repetitive and takes too much time. In the next following steps we will look at how to set up a dev-mode container that will update anytime we make changes.
+- Open your app and make a change. When you refresh your browser, you will realize that the app has not updated. For you to see the change, you have to stop the container, remove it and build a new one. This is not an efficient way for developers since it is repetitive and takes too much time. In the next following steps we will look at how to set up a dev-mode container that will update anytime we make changes.
 
 - Firstly install nodemon as a dev dependency in you app and update your add this to your script package.json file `` "dev": "nodemon src/index.js"``
 
