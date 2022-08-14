@@ -11,4 +11,7 @@
 - Now that you have your docker image set up, the next step is to create a container. All the dependencies, configurations etc of your will be installed in this container. Run the command ```docker run -d -p <host-port>:<container-port> <image-name>``` The ``-d`` will run the new container in a detached mode (in the background and the -p will create both host-port and container-port and map them together. Without the ports we cannot access our app. Do not forget to add the image-name you previously created to the command. For example ``docker run -d -p 3000:3000 first-docker-image`` This command will use the first-docker-image, create a container, load our app into it and serve it on port 3000. When you visit the ``localhost:3000`` you will access the app.
 
 - You have successfully created a docker image and build your first containerized app. Hooray!!!
+
+- Open your app and make n change. When you refresh your browser, you will realize that the app has not updated. For you to see the change, you have to stop the container, remove it and build a new one. This is not an efficient way for developers since it is repetitive and takes too much time. In the next following steps we will look at how to set up a dev-mode container that will update anytime we make changes.
+
 - 
