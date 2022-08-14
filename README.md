@@ -14,4 +14,30 @@
 
 - Open your app and make n change. When you refresh your browser, you will realize that the app has not updated. For you to see the change, you have to stop the container, remove it and build a new one. This is not an efficient way for developers since it is repetitive and takes too much time. In the next following steps we will look at how to set up a dev-mode container that will update anytime we make changes.
 
-- 
+- Firstly install nodemon as a dev dependency in you app and update your add this to your script package.json file `` "dev": "nodemon src/index.js"``
+
+
+- Make sure you don't have any previous containers running. Run ``docker ps`` to get the container ``id`` Run ``docker rm -f <id>`` to remove the container. For example ``docker rm -f 736788336ccd383`` or you can simple use the docker desktop app to delete the container.
+
+- Make sure you are in the root directory and rund the following command ``docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install && yarn run dev"`` This command is likely for fail on windows because ``$(pwd)`` is a linux command to get the absolute path of the root dir. A workaround is to copy the absolute path of your file and replace ``$(pwd)`` with the absolute path eg ``C:\Users\projects\app``. 
+
+-- If you are using a Macbook or any ARM64 device then use this command ``docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "apk add --no-cache python2 g++ make && yarn install && yarn run dev"``
+
+- You are likely to get a error message ``cannot find image: install latest: locally``. This means that you do not have the node:12-alpine image locally installed. Open a new cmd and run ``docker pull node:12-alpine`` This will install the image.
+
+- You can watch the logs using ``docker logs -f <container-id>`` You'll know you're ready to go when you see this.
+
+``
+    $ nodemon src/index.js
+    [nodemon] 1.19.2
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching dir(s): *.*
+    [nodemon] starting `node src/index.js`
+    Using sqlite database at /etc/todos/todo.db
+    Listening on port 3000
+
+``
+
+- Make changes in your app and refresh your browser. Hooray!, you have setup a docker development workflow. Happy coding
+
+- Want to dive deeper into docker?....visit https://docs.docker.com/get-started/overview/
