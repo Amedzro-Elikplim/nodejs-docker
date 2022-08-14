@@ -19,11 +19,11 @@
 
 - Make sure you don't have any previous containers running. Run ``docker ps`` to get the container ``id`` Run ``docker rm -f <id>`` to remove the container. For example ``docker rm -f 736788336ccd383`` or you can simple use the docker desktop app to delete the container.
 
-- Make sure you are in the root directory and rund the following command ``docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install && yarn run dev"`` This command is likely for fail on windows because ``$(pwd)`` is a linux command to get the absolute path of the root dir. A workaround is to copy the absolute path of your file and replace ``$(pwd)`` with the absolute path eg ``C:\Users\projects\app``. 
+- Make sure you are in the root directory and run the following command ``docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install && yarn run dev"`` This command is likely for fail on windows because ``$(pwd)`` is a linux command to get the absolute path of the root dir. A workaround is to copy the absolute path of your file and replace ``$(pwd)`` with the absolute path eg ``C:\Users\projects\app``. 
 
 - If you are using a Macbook or any ARM64 device then use this command ``docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "apk add --no-cache python2 g++ make && yarn install && yarn run dev"``
 
-- You are likely to get a error message ``cannot find image: install latest: locally``. This means that you do not have the node:12-alpine image locally installed. Open a new cmd and run ``docker pull node:12-alpine`` This will install the image.
+- You are likely to get a error message ``cannot find image: install latest: locally``. This means that you do not have the node:12-alpine image locally installed. Open a new cmd and run ``docker pull node:12-alpine`` This will install the image and run the command again
 
 - You can watch the logs using ``docker logs -f <container-id>`` You'll know you're ready to go when you see this.
 
